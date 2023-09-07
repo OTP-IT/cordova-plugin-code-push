@@ -18,12 +18,12 @@ class Sdk {
     /**
      * Reads the CodePush configuration and creates an AcquisitionManager instance using it.
      */
-    public static getAcquisitionManager(callback: Callback<AcquisitionManager>, userDeploymentKey?: string, contentType?: string): void {
+    public static getAcquisitionManager(callback: Callback<AcquisitionManager>, userDeploymentKey?: string, userServerUrl?: string, contentType?: string): void {
         var resolveManager = (): void => {
             if (userDeploymentKey !== Sdk.DefaultConfiguration.deploymentKey || contentType) {
                 var customConfiguration: Configuration = {
                     deploymentKey: userDeploymentKey || Sdk.DefaultConfiguration.deploymentKey,
-                    serverUrl: Sdk.DefaultConfiguration.serverUrl,
+                    serverUrl: userServerUrl || Sdk.DefaultConfiguration.serverUrl,
                     ignoreAppVersion: Sdk.DefaultConfiguration.ignoreAppVersion,
                     appVersion: Sdk.DefaultConfiguration.appVersion,
                     clientUniqueId: Sdk.DefaultConfiguration.clientUniqueId

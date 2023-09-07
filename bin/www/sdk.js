@@ -13,12 +13,12 @@ var HttpRequester = require("./httpRequester");
 var Sdk = (function () {
     function Sdk() {
     }
-    Sdk.getAcquisitionManager = function (callback, userDeploymentKey, contentType) {
+    Sdk.getAcquisitionManager = function (callback, userDeploymentKey, userServerUrl, contentType) {
         var resolveManager = function () {
             if (userDeploymentKey !== Sdk.DefaultConfiguration.deploymentKey || contentType) {
                 var customConfiguration = {
                     deploymentKey: userDeploymentKey || Sdk.DefaultConfiguration.deploymentKey,
-                    serverUrl: Sdk.DefaultConfiguration.serverUrl,
+                    serverUrl: userServerUrl || Sdk.DefaultConfiguration.serverUrl,
                     ignoreAppVersion: Sdk.DefaultConfiguration.ignoreAppVersion,
                     appVersion: Sdk.DefaultConfiguration.appVersion,
                     clientUniqueId: Sdk.DefaultConfiguration.clientUniqueId

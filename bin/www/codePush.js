@@ -82,7 +82,7 @@ var CodePush = (function () {
             }
         });
     };
-    CodePush.prototype.checkForUpdate = function (querySuccess, queryError, deploymentKey) {
+    CodePush.prototype.checkForUpdate = function (querySuccess, queryError, deploymentKey, serverUrl) {
         try {
             var callback = function (error, remotePackageOrUpdateNotification) {
                 if (error) {
@@ -139,7 +139,7 @@ var CodePush = (function () {
                             CodePushUtil.invokeErrorCallback(error, queryError);
                         });
                     }
-                }, deploymentKey);
+                }, deploymentKey, serverUrl);
             };
             if (deploymentKey) {
                 queryUpdate();
@@ -276,7 +276,7 @@ var CodePush = (function () {
             }
         };
         syncCallback && syncCallback(null, SyncStatus.CHECKING_FOR_UPDATE);
-        window.codePush.checkForUpdate(onUpdate, onError, syncOptions.deploymentKey);
+        window.codePush.checkForUpdate(onUpdate, onError, syncOptions.deploymentKey, syncOptions.serverUrl);
     };
     CodePush.prototype.getDefaultSyncOptions = function () {
         if (!CodePush.DefaultSyncOptions) {

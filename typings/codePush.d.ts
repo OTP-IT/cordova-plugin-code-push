@@ -179,8 +179,9 @@ interface CodePushCordovaPlugin {
      *                     A null package means the application is up to date for the current native application version.
      * @param queryError Optional callback invoked in case of an error.
      * @param deploymentKey Optional deployment key that overrides the config.xml setting.
+     * @param serverUrl Optional serverUrl that overrides the config.xml setting.
      */
-    checkForUpdate(querySuccess: SuccessCallback<IRemotePackage>, queryError?: ErrorCallback, deploymentKey?: string): void;
+    checkForUpdate(querySuccess: SuccessCallback<IRemotePackage>, queryError?: ErrorCallback, deploymentKey?: string, serverUrl?: string): void;
 
     /**
      * Notifies the plugin that the update operation succeeded and that the application is ready.
@@ -334,6 +335,11 @@ interface SyncOptions extends InstallOptions {
      * Overrides the config.xml deployment key when checking for updates.
      */
     deploymentKey?: string;
+
+    /**
+     * Overrides the config.xml serverUrl when checking for updates.
+     */
+    serverUrl?: string;
 }
 
 /**
