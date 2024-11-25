@@ -15,7 +15,7 @@ var Sdk = (function () {
     }
     Sdk.getAcquisitionManager = function (callback, userDeploymentKey, userServerUrl, contentType) {
         var resolveManager = function () {
-            if (userDeploymentKey !== Sdk.DefaultConfiguration.deploymentKey || contentType) {
+            if (userDeploymentKey !== Sdk.DefaultConfiguration.deploymentKey || userServerUrl !== Sdk.DefaultConfiguration.serverUrl || contentType) {
                 var customConfiguration = {
                     deploymentKey: userDeploymentKey || Sdk.DefaultConfiguration.deploymentKey,
                     serverUrl: userServerUrl || Sdk.DefaultConfiguration.serverUrl,

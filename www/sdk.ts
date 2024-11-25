@@ -20,7 +20,7 @@ class Sdk {
      */
     public static getAcquisitionManager(callback: Callback<AcquisitionManager>, userDeploymentKey?: string, userServerUrl?: string, contentType?: string): void {
         var resolveManager = (): void => {
-            if (userDeploymentKey !== Sdk.DefaultConfiguration.deploymentKey || contentType) {
+            if (userDeploymentKey !== Sdk.DefaultConfiguration.deploymentKey || userServerUrl !== Sdk.DefaultConfiguration.serverUrl || contentType) {
                 var customConfiguration: Configuration = {
                     deploymentKey: userDeploymentKey || Sdk.DefaultConfiguration.deploymentKey,
                     serverUrl: userServerUrl || Sdk.DefaultConfiguration.serverUrl,
